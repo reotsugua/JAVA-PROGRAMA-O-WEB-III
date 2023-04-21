@@ -18,4 +18,4 @@ Com 2000 VU, é possível simular uma carga ainda mais intensa na aplicação.
 - Uso de recursos: o WebFlux apresentou consumo em média 70% menos memória e processamento.
 
 ## Conclusão
-podemos concluir que o Spring WebFlux ainda apresenta uma melhor performance e escalabilidade em relação ao Spring MVC, mas a diferença entre as abordagens pode começar a diminuir em cenários de carga muito intensa.
+Podemos concluir que o Spring WebFlux ainda apresenta uma melhor performance e escalabilidade em relação ao Spring MVC, mas a diferença entre as abordagens pode começar a diminuir em cenários de carga muito intensa.
