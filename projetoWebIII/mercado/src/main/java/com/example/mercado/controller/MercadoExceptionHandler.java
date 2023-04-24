@@ -14,17 +14,17 @@ public class MercadoExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<String> handleException(Exception e) {
-        log.error("Unexpected error", e);
+        log.error("Erro inesperado", e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("Unexpected error: " + e.getMessage());
+                .body("Erro inesperado: " + e.getMessage());
     }
 
     @ExceptionHandler(value = {RuntimeException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
-        log.error("Runtime error", e);
+        log.error("Erro de execução", e);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Runtime error: " + e.getMessage());
+                .body("Erro de execução: " + e.getMessage());
     }
 }
 
