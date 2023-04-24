@@ -21,6 +21,11 @@ public class PagamentoService {
     public Mono<Comprovante> pagar(Pagamento pagamento) {
 
         WebClient webClient = WebClient.create("http://localhost:8080");
+        // Busca o saldo do usuário que está realizando a transação
+        Mono<UsuarioSaldo> usuarioMono = webClient.get()
+                .uri("/usuarios/{id}/saldo", pagamento.getPagador())
+                .retrieve().bodyToMono(UsuarioSaldo.class);
+
         Flux<Usuario> usuarios = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/users/usernames") // http://..users/usernames?users=bob,alice
