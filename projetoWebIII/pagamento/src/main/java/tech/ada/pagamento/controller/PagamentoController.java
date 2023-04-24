@@ -11,6 +11,7 @@ import tech.ada.pagamento.model.Comprovante;
 import tech.ada.pagamento.model.Pagamento;
 import tech.ada.pagamento.model.Usuario;
 import tech.ada.pagamento.service.PagamentoService;
+import tech.ada.pagamento.validator.PagamentoValidator;
 
 @RestController
 @RequestMapping("/pagamentos")
@@ -18,13 +19,16 @@ import tech.ada.pagamento.service.PagamentoService;
 public class PagamentoController {
 
     private PagamentoService service;
+    private PagamentoValidator validator;
 
-    public PagamentoController(PagamentoService service) {
+    public PagamentoController(PagamentoService service, PagamentoValidator validator) {
         this.service = service;
+        this.validator = validator;
     }
 
     @PostMapping
     public Mono<Comprovante> pagar(@RequestBody Pagamento pagamento) {
+        validator.validarSaldo(pagamento);
         return service.pagar(pagamento);
     }
 
